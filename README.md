@@ -7,6 +7,7 @@ Ticket Resolution Recommendation System is an AI-driven application designed to 
 This helps reduce manual effort, improves response time, and enhances support efficiency in financial or enterprise environments.
 
 <img width="1888" height="896" alt="image" src="https://github.com/user-attachments/assets/2aed4b1a-7618-4331-8ec6-b5ceaf1a45e4" />
+
 ---
 
 ## 🚀 Key Features
