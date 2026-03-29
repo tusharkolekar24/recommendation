@@ -1,0 +1,283 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block form_container %}
+    <div class="form-container">
+        <h1>Parameters</h1>
+        <div class="sidebar-divider"></div>
+        <form action="{{ url_for('submit_home_form') }}" method="post" id="userForm">
+            <div class="form-group">
+
+                <label for="number_of_recommendation">1.Recommendation</label>                
+                <select id="number_of_recommendation" name="number_of_recommendation" required>
+                    {% for numbers in form_data.number_of_recommendation %}
+                            <option value='{{ numbers }}'>{{ numbers }}</option>
+                    {% endfor %}
+                </select>
+                <label for="similarity_score_limit">2. Similarity Score Limit</label>                
+                <select id="similarity_score_limit" name="similarity_score_limit" required>
+                    {% for socre_limit in form_data.similarity_score_limit %}
+                            <option value='{{ socre_limit }}'>{{ socre_limit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="form-submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block navbar_main %}
+    <!-- CARDS -->
+    <section class="cards">
+        {% if form_data %}
+        <div class="card">
+            <div>
+                <span>Resolution Category</span>
+                <h3>{{ form_data.user_awareness[0] }}</h3>
+            </div>
+
+            <div class="icon blue"><i class="fas fa-clock"></i></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span>Number of Ticket</span>
+                <h3>{{ form_data.number_of_ticket }}</h3>
+            </div>
+            <div class="icon green"><i class="fas fa-chart-bar"></i></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span>Recommendation</span>
+                <h3>{{ form_data.selected_recommandation }}</h3>
+            </div>
+            <div class="icon purple"><i class="fas fa-bullhorn"></i></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span>Similarity Score</span>
+                <h3>{{ form_data.similarity_range }}</h3>
+            </div>
+            <div class="icon orange"><i class="fas fa-gauge"></i></div>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- FORM + WORD CLOUD -->
+    <section class="grid">
+
+        <div class="box-left">
+
+            <!-- HEADER -->
+            <div class="card-header">
+                <div class="icon-box">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div>
+                    <h3>Create New Resolution Rule</h3>
+                    <p>Add keywords and category for auto-resolution</p>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="form">
+                <form action="{{ url_for('submit_user_input_form') }}" method="post" id="userForm">
+                    <!-- ROW -->
+                    <div class="row-field">
+                        <div class="field">
+                            <!-- <label>User Resolution Note</label>
+                            <select>
+                                <option>User Awareness</option>
+                            </select> -->
+
+                            <label for="user_awareness">User Resolution Note</label>                
+                            <select id="user_awareness" name="user_awareness" required>
+
+                            {% for awareness in form_data.user_awareness %}
+                                    <option value='{{ awareness }}'>{{ awareness }}</option>
+                            {% endfor %}
+
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <!-- <label>Program/Other Note</label>
+                            <input type="text" value="Other"> -->
+
+                            <label for="report_paramerter">Program/Other Note</label>                
+
+                                {% if form_data.report_paramerter %}
+                                <input type="text" id ="report_paramerter" name="report_paramerter" rows="3" value="{{ form_data.report_paramerter }}" required placeholder="Enter Program Info">
+                                {% else %}
+                                <input type="text" id ="report_paramerter" name="report_paramerter"  rows="3" value="Other" required placeholder="Enter Program Info">
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- TEXTAREA -->
+                    <div class="field">
+                        <!-- <label>Resolution Issue</label>
+                        <textarea>Database connection lost Application crashes under specific conditions.</textarea> -->
+                        <label for="issue_info">Resolution Issue</label>
+                        {% if form_data.issue_info %}
+                            <textarea id="issue_info" name="issue_info" placeholder="Enter detailed resolution here...">{{ form_data.issue_info }}</textarea>
+                        {% else %}
+                            <textarea id="issue_info" name="issue_info" placeholder="Enter detailed resolution here..."></textarea>
+                        {% endif %}
+                    </div>
+
+                    <!-- BUTTON -->
+                    <div class="btn-wrap">
+                        <button>Submit Rule</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="box-right">
+
+            <!-- HEADER -->
+            <div class="box-header">
+                <div class="title">
+                <div class="icon-box">
+                <i class="fas fa-chart-area"></i>
+                </div>
+                    <span>Most Important Keyword used in Issues</span>
+                </div>
+
+                <!-- <button class="download-btn">
+                    <i class="fas fa-download"></i> Download File
+                </button> -->
+
+                <a href="{{ url_for('download_excel') }}" class="download-btn">
+                    <i class="fas fa-download"></i> Download File
+                </a>
+
+
+            </div>
+
+            <!-- WORD CLOUD AREA -->
+            <div class="word-cloud">
+                <!-- <img src="static\images\Issue.png" alt="word cloud"> -->
+                    {% if form_data.frequency_plot %}
+                        <img id='wordcloud' src="{{  form_data.frequency_plot }}?t={{ form_data.timestamp }}" alt="Word Cloud" />
+                    {% else %}
+                        <img id='wordcloud' src="{{ url_for('static', filename='images/black.png') }}" alt="Word Cloud" />
+                    {% endif %} 
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LIST -->
+    <section class="list">
+
+    <div class="exp-container">
+
+        <!-- <div class="exp-card">
+            <div class="exp-header">
+                <div class="exp-left">
+                    <span class="exp-arrow">>></span>
+                    <span class="exp-title">Page not loading</span>
+                </div>
+                <div class="exp-right">
+                    <span class="exp-percent">92%</span>
+                    <div class="exp-bar">
+                        <div class="exp-fill" style="width:92%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exp-body">
+                Detailed info about "Page not loading" issue...
+            </div>
+        </div> -->
+        {% for records in form_data.recommandations %}
+            <div class="exp-card" onclick="toggleCard(this)">
+            
+                <div class="exp-header">
+                    {% if records %}
+                    <div class="exp-left">
+                        <span class="exp-arrow">▶</span>
+                        <span class="exp-title">{{ records.short_description }}</span>
+                    </div>
+                    
+                    <div class="exp-right">
+                        <span class="exp-percent">{{ records.similarity_score*100 }}%</span>
+                        <div class="exp-bar">
+                            <div class="exp-fill" style="width: {{ records.similarity_score*100 }}%;"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- EXPANDABLE BODY -->
+                <div class="exp-body">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Title</td>
+                                <td>{{ records.other }}</td>
+                            </tr>
+                            <tr>
+                                <td>Issue</td>
+                                <td>{{ records.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>RCA</td>
+                                <td>{{ records.issue }}</td>
+                            </tr>
+                            <tr>
+                                <td>Resolution</td>
+                                <td>{{ records.resolution }}</td>
+                            </tr>
+                            <tr>
+                                <td>Short Description</td>
+                                <td>{{ records.short_description }}</td>
+                            </tr>
+                            <tr>
+                                <td>Reported Date</td>
+                                <td>{{ records.resolution_category }}</td>
+                            </tr>
+                            <tr>
+                                <td>Similarity</td>
+                                <td>{{ records.similarity_score }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    </section>
+
+{% endblock %}
+</body>

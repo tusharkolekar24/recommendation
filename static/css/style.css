@@ -1,0 +1,981 @@
+/* static/style.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    display: flex;
+    /* height: 100vh; */
+    overflow: hidden;
+}
+/*-------------------------------------------------------------Sidebar ----------------------------------------------------*/
+/* .sidenav {
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-right: 1px solid #f4f4f4;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: auto;
+}
+
+.sidenav h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: rgb(99, 99, 233);
+    text-align: center;
+}
+
+.sidenav a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: left;
+    background-color: rgb(171, 171, 238);
+    border: 1px solid transparent;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.sidenav a:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border-color: rgb(171, 171, 238);
+}
+
+.sidenav a i {
+
+    margin-right: 10px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+
+.sidenav h1 i {
+    margin-right: 10px; 
+    font-size: 32px;
+}
+
+.sidenav.toggled {
+    width: 60px; 
+} */
+
+/* SIDEBAR */
+.sidebar {
+    width: 225px;
+
+    height: auto;
+
+    padding: 20px 16px;
+
+    background: #f4f8f9;
+
+    flex-direction: column;
+    align-items: center;   /* 🔥 THIS FIXES CENTER */
+    overflow-y: auto;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    margin-left:35px;
+    margin-right:35px;
+
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+
+   }
+
+
+
+.logo i {
+    font-size: 22px;
+    color: #6366f1;
+
+}
+
+.smart {
+    color: #111;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.ai {
+    color: #6366f1;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* DIVIDER LINE */
+.divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 5px 0 10px 0;
+}
+
+/* MENU CARD BASE */
+.menu-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+    margin-bottom: 12px;
+
+    border-radius: 10px;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+/* ICON */
+.menu-card i {
+    font-size: 16px;
+    color: #6366f1;
+}
+
+/* ACTIVE */
+.menu-card.active {
+    background: linear-gradient(90deg, #6366f1, #7c83ff);
+    color: #fff;
+}
+
+.menu-card.active i {
+    color: #fff;
+}
+
+/* BORDERED ITEMS */
+.menu-card.bordered {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+}
+
+/* TOOL */
+.tool {
+    justify-content: space-between;
+}
+
+.tool .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ARROW */
+.arrow {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* HOVER */
+.menu-card.bordered:hover {
+    background: #f9fafb;
+}
+
+.tool-content {
+    display: none;
+}
+
+.tool-content.active {
+    display: block;
+}
+
+/*---------------------------------------------------------------Tool Form Info-------------------------------------------------------------*/
+
+/* Container */
+.form-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Title */
+.form-container h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: #eee;
+    margin: 10px 0 20px;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Select Dropdown */
+select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    background: #f9fafb;
+    transition: all 0.25s ease;
+    cursor: pointer;
+} 
+
+/* Hover Effect */
+select:hover {
+    border-color: #6366f1;
+    background: #fff;
+}
+
+/* Focus Effect */
+select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    background: #fff;
+}
+
+/* Button */
+button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #6366f1, #7c83ff);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-submit{
+    width: 100%;
+}
+/* Button Hover */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(99,102,241,0.3);
+}
+
+/* Button Click */
+button:active {
+    transform: scale(0.97);
+}
+
+/* Smooth entry animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*---------------------------------------------------------------Dropdown Info-------------------------------------------------------------*/
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between text and arrow */
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(171, 171, 238);
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.dropdown-button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.dropdown-button .text {
+    flex: 1; /* Takes up available space */
+    text-align: left; /* Ensure text aligns left */
+}
+
+.dropdown-button:hover {
+    background-color: #fff;
+    color: rgb(171, 171, 238);
+    border-color: rgb(171, 171, 238);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid rgb(171, 171, 238);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    position: relative;
+    overflow-y: auto;
+    background-color: rgb(233, 237, 247); /* Optional background color #e0e0e0*/
+}
+
+
+/* Add to static/style.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-left: 18px; /* Apply 15px margin to left and right */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    background-color: rgb(233, 237, 247);
+}
+
+
+/*--------------------------------------------------------------- TOPBAR -------------------------------------------------------------*/
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #ffffff;
+    padding: 8px 14px;
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #e5e7eb;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+}
+
+/* Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===== SEARCH ===== */
+.search-box {
+    display: flex;
+    align-items: center;
+
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+
+    padding: 4px 10px;
+    width: 260px;
+    height: 25px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 13px;
+    color: #374151;
+}
+
+/* SEARCH ICON */
+.search-box .icon {
+    width: 16px;
+    height: 16px;
+    stroke: #888;
+    stroke-width: 2;
+    fill: none;
+    margin-right: 6px;
+}
+
+/* Download Button */
+.download-btn-sample {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    background: linear-gradient(90deg, #3b5bdb, #6f42c1);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(59, 91, 219, 0.3);
+    transition: 0.3s;
+}
+
+.download-btn-sample:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+/* ===== RIGHT SECTION ===== */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;   /* reduced spacing */
+}
+
+/* ensure all children align properly */
+.topbar-right > div {
+    display: flex;
+    align-items: center;
+}
+
+/* ===== WELCOME ===== */
+.welcome {
+    font-size: 14px;
+    color: #374151;
+    white-space: nowrap;
+}
+
+/* ===== MESSAGE ICON ===== */
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left:10px;
+}
+
+.message i {
+    font-size: 16px;
+    color: #6b7280;
+    transition: 0.2s;
+    display: block;
+}
+
+.message i:hover {
+    color: #6366f1;
+}
+
+/* ===== NOTIFICATION ===== */
+.notification {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* notification icon */
+.notification .icon {
+    width: 18px;
+    height: 18px;
+    stroke: #6b7280;
+    stroke-width: 2;
+    fill: none;
+    display: block;
+}
+
+/* blue dot */
+.notification .dot {
+    position: absolute;
+    top: 1px;
+    /* right: -5px; */
+    width: 6px;
+    height: 6px;
+    background: #3b82f6;
+    border-radius: 50%;
+}
+
+/* ===== PROFILE ===== */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+/* dropdown arrow */
+.arrow-icon {
+    width: 14px;
+    height: 14px;
+    stroke: #6b7280;
+    stroke-width: 2;
+    fill: none;
+    display: block;
+}
+
+/* Navbar Main Styling */
+.navbar-content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    padding: 5px; /* Add padding around the content */
+    margin-bottom: 20px; /* Space below the navbar main */
+}
+
+/* CARDS */
+/*--------------------------------------------------------------- CARDS -------------------------------------------------------------*/
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.card {
+    /*background: #f8fafc;*/
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card span {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.card h3 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #111827;
+}
+
+
+/* ICON CONTAINER */
+.icon {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* BACKGROUND COLORS (TRANSPARENT) */
+.blue {
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+}
+
+.green {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.purple {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+}
+
+.orange {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+/*--------------------------------------------------------------- Row2 Card Header -------------------------------------------------------------*/
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: 40% 58.5%;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.box {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    
+}
+
+/* BOX (renamed from card) */
+.box-left {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 18px;
+    /*width: 520px;  */
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    font-family: 'Inter', sans-serif;
+    flex:0.4;
+}
+
+/* HEADER */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.card-header p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* ICON */
+.icon-box {
+    width: 36px;
+    height: 36px;
+    background: #e0e7ff;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box i {
+    color: #6366f1;
+    font-size: 21px;
+}
+
+/* FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ROW */
+.row-field {
+    display: flex;
+    gap: 12px;
+}
+
+/* FIELD */
+.field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.field label {
+    font-size: 12px;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+/* INPUTS */
+.field input,
+.field select,
+.field textarea {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13px;
+    outline: none;
+}
+
+/* TEXTAREA */
+.field textarea {
+    resize: none;
+    height:110px;
+}
+
+/* BUTTON */
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+button {
+    
+    background: linear-gradient(90deg, #3b5bdb, #6f42c1);
+    color: #ffffff;
+
+    border: none;
+    padding: 10px 18px;
+
+    border-radius: 10px;
+    font-size: 12px;
+
+    box-shadow: 0 4px 10px rgba(59, 91, 219, 0.3);
+    width:25%;
+}
+
+button:hover {
+    opacity: 0.95;
+}
+
+/* BOX RIGHT */
+.box-right {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+/* HEADER */
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+/* TITLE */
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #111827;
+}
+
+.title i {
+color: #6366f1; 
+
+}
+
+/* DOWNLOAD BUTTON */
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    background: #ffffff;
+    border: 1px solid #6366f1;
+    color: #6366f1;
+
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    width:18%;
+}
+
+.download-btn:hover {
+    background: #6366f1;
+    color: #fff;
+}
+
+/* WORD CLOUD INNER BOX */
+.word-cloud {
+    margin-top: 10px;
+
+    border: 2.5px solid #e5e7eb;      /* ✅ visible border */
+    border-radius: 5px;
+
+    background: #f9fafb;            /* ✅ light grey background */
+
+    padding: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGE */
+.word-cloud img {
+    width: 100%;
+    height: 230px;
+    /*object-fit: contain;*/
+}
+/*--------------------------------------------------------------- Row3 Expandable card -------------------------------------------------------------*/
+/* LIST */
+.list {
+    margin-top: 15px;
+}
+
+/* CONTAINER */
+.exp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* CARD */
+.exp-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* HEADER */
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+/* LEFT */
+.exp-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.exp-arrow {
+    color: #6366f1;
+    font-weight: bold;
+}
+
+.exp-title {
+    font-size: 14px;
+    color: #2563eb;
+}
+
+/* RIGHT */
+.exp-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* PERCENT */
+.exp-percent {
+    font-size: 13px;
+    color: #111827;
+}
+
+/* PROGRESS BAR */
+.exp-bar {
+    width: 120px;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.exp-fill {
+    height: 100%;
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+/* BODY (HIDDEN BY DEFAULT) */
+.exp-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    font-size: 13px;
+    color: #374151;
+    transition: all 0.3s ease;
+}
+
+/* ACTIVE */
+/* .exp-card.active .exp-body {
+    max-height: 100px;
+    padding: 10px 16px 16px;
+} */
+
+/* Show when active */
+.exp-card.active .exp-body {
+    max-height: 500px;
+    margin-top: 15px;
+}
+
+/* Table styling */
+.exp-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.exp-body th {
+    text-align: left;
+    padding: 8px;
+    background: #f3f4f6;
+    font-size: 13px;
+}
+
+.exp-body td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+/*--------------------------------------------------------------- FOOTER -------------------------------------------------------------*/
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 18px;
+}

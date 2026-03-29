@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recommondation</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <!-- jQuery (required for Select2) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Select2 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Select2 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-dragon"></i>
+            <div class="logo-text">
+                <span class="smart">Smart</span><span class="ai">AI</span>
+            </div>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="divider"></div>
+
+        <a class="menu-card bordered" href="{{ url_for('home') }}">
+           <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+
+        <a class="menu-card bordered" href="{{ url_for('logout') }}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+
+        <div class="menu-card bordered tool" onclick="toggleTool()">
+            <div class="left">
+                <i class="fas fa-tools"></i>
+                <span>Tool</span>
+            </div>
+            <i class="fas fa-chevron-down arrow"></i>
+        </div>
+
+        <!-- TOOL CONTENT -->
+        <div id="toolContent" class="tool-content">
+            {% block form_container %}{% endblock %}
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="topbar"> 
+            <!-- SEARCH (LEFT SIDE - UNCHANGED) -->
+            <!-- <div class="search-box">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16" y1="16" x2="21" y2="21"></line>
+                </svg>
+                <input type="text" placeholder="Search">
+            </div> -->
+
+            <div class="search-container">
+
+                <!-- SEARCH -->
+                <div class="search-box">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="16" y1="16" x2="21" y2="21"></line>
+                    </svg>
+                    <input type="text" placeholder="Search">
+                </div>
+
+                <!-- DOWNLOAD BUTTON -->
+                <a href="{{ url_for('download_sample_data') }}" class="download-btn-sample">
+                    <i class="fas fa-download"></i> Sample
+                </a>
+
+            </div>
+
+
+                <!-- RIGHT SIDE -->
+            <div class="topbar-right">
+
+                <!-- WELCOME -->
+                <div class="welcome">
+                    <span>Welcome, {{ username }}!</span>
+                </div>
+
+                <!-- MESSAGE ICON (SEPARATE CLASS) -->
+                <div class="message">
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <!-- NOTIFICATION -->
+                <div class="notification">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 01-3.46 0"></path>
+                    </svg>
+                    <span class="dot"></span>
+                </div>
+
+                <!-- PROFILE -->
+                <div class="profile">
+                    <img src="https://i.pravatar.cc/30" alt="user">
+                    <svg class="arrow-icon" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="navbar-content-container">
+
+            <div id="navbar-main">
+                {% block navbar_main %}{% endblock %}
+            </div>
+
+        </div>
+    
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Recommondation | Updated:{{ current_date }} | copyright © {{ years }}</p>
+            </div>
+        </footer>
+    </div>
+    <!-- JS (FIXED PATH) -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+</body>
+</html>
